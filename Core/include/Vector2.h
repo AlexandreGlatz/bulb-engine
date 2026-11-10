@@ -27,8 +27,18 @@ struct Vector2
 
     std::string ToString();
 
-    T x;
-    T y;
+    union
+    {
+        T x;
+        T width;
+        T r;
+    };
+    union
+    {
+        T y;
+        T height;
+        T g;
+    };
 };
 
 #include "Vector2.inl"
