@@ -7,5 +7,5 @@ set(SOURCE
     
 add_executable(${PROJECT_NAME} ${SOURCE})
 
-target_link_libraries(${PROJECT_NAME} "${PROJECT_SOURCE_DIR}/../Dependencies/SDL2/libSDL2.a")
-
+target_link_libraries(${PROJECT_NAME} Core::library)
+target_link_libraries(${PROJECT_NAME} Render::library)

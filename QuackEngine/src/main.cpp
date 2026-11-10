@@ -2,44 +2,18 @@
 // CMake Generator by Alexandre Glatz
 // https://github.com/AlexandreGlatz/cmake-generator
 ////////////////////////////////////////////////////
-#include <iostream>
-#include <SDL2/SDL.h>
+#include "Log.h"
+#include "Vector2.h"
 
-#define SCREEN_WIDTH 100;
-#define SCREEN_HEIGHT 100;
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
-    SDL_Window *window;
-    SDL_Renderer *renderer;
-    SDL_Surface *surface;
-    SDL_Event event;
+    std::cout<<"hello"<<std::endl;
+    Log::Info("Informations");
+    Vector2f vec(0.0f, 0.0f);
+    vec += 1.0f;
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't initialize SDL: %s", SDL_GetError());
-        return 3;
-    }
-
-    if (SDL_CreateWindowAndRenderer(320, 240, SDL_WINDOW_RESIZABLE, &window, &renderer)) {
-        SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't create window and renderer: %s", SDL_GetError());
-        return 3;
-    }
-
-    while (1) {
-        SDL_PollEvent(&event);
-        if (event.type == SDL_QUIT) {
-            break;
-        }
-        SDL_SetRenderDrawColor(renderer, 255, 255, 0x00, 0x00);
-        SDL_RenderClear(renderer);
-        SDL_RenderPresent(renderer);
-    }
-
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-
-    SDL_Quit();
-
-    return 0;
+    Log::Info(vec.ToString());
 
 }
