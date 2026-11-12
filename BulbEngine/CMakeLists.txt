@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.0)
-project(QuackEngine)
+project(BulbEngine)
 
 set(SOURCE
     ${PROJECT_SOURCE_DIR}/src/main.cpp
