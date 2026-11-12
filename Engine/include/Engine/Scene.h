@@ -1,7 +1,7 @@
 #ifndef SCENE__H_
 #define SCENE__H_
 
-#include "Define.h"
+#include "Core/Define.h"
 #include <SDL2/SDL.h>
 
 namespace bulb

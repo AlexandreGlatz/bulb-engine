@@ -1,8 +1,8 @@
 #ifndef WINDOW_H__
 #define WINDOW_H__
 
-#include "Define.h"
-#include "Vector2.h"
+#include <Core/Define.h>
+#include <Core/Vector2.h>
 
 #include <string>
 #include <SDL2/SDL.h>

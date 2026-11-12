@@ -1,8 +1,8 @@
 #ifndef TEST_SCENE__H_
 #define TEST_SCENE__H_
 
-#include "Scene.h"
-#include "Vector2.h"
+#include <Core/Vector2.h>
+#include <Engine/Scene.h>
 
 class TestScene : public bulb::Scene
 {

@@ -1,7 +1,7 @@
 #ifndef GAME_MANAGER__H_
 #define GAME_MANAGER__H_
 
-#include "Define.h"
+#include "Core/Define.h"
 
 #include <string>
 #include <vector>

@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "Rectangle.h"
-#include "Log.h"
+
+#include <Core/Log.h>
 
 namespace bulb
 {

@@ -1,6 +1,7 @@
 #include "Scenes/TestScene.h"
-#include "Rectangle.h"
-#include "Renderer.h"
+
+#include <Render/Rectangle.h>
+#include <Render/Renderer.h>
 
 TestScene::TestScene()
 : Scene(),

@@ -2,7 +2,7 @@
 // CMake Generator by Alexandre Glatz
 // https://github.com/AlexandreGlatz/cmake-generator
 ////////////////////////////////////////////////////
-#include "GameManager.h"
+#include <Engine/GameManager.h>
 #include "Scenes/TestScene.h"
 
 int main(int argc, char *argv[])

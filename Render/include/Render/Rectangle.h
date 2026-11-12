@@ -2,8 +2,9 @@
 #define RECTANGLE__H_
 
 #include <SDL2/SDL_rect.h>
-#include "Define.h"
-#include "Vector2.h"
+
+#include <Core/Define.h>
+#include <Core/Vector2.h>
 
 namespace bulb
 {

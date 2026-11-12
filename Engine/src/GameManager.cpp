@@ -1,8 +1,9 @@
 #include "GameManager.h"
-#include "Window.h"
-#include "Renderer.h"
 #include "Scene.h"
-#include "Log.h"
+
+#include <Core/Log.h>
+#include <Render/Window.h>
+#include <Render/Renderer.h>
 
 namespace bulb
 {

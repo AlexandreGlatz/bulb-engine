@@ -1,7 +1,7 @@
 #ifndef RENDERER__H_
 #define RENDERER__H_
 
-#include "Window.h"
+#include "Render/Window.h"
 
 namespace bulb
 {

@@ -14,6 +14,11 @@ target_include_directories(${PROJECT_NAME}
         ${PROJECT_SOURCE_DIR}/include/
 )
 
+target_include_directories(${PROJECT_NAME}
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include/Render
+)
+
 if(UNIX AND NOT APPLE)
     target_link_libraries(${PROJECT_NAME} "${CMAKE_SOURCE_DIR}/Dependencies/SDL2/Linux/libSDL2-2.0.so")
     #target_link_libraries(${PROJECT_NAME} "${CMAKE_SOURCE_DIR}/Dependencies/glew/Linux/libGLEW.so")
