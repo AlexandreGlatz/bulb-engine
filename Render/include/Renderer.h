@@ -1,9 +1,9 @@
 #ifndef RENDERER__H_
 #define RENDERER__H_
 
-#include "Rectangle.h"
 #include "Window.h"
 
+class Rectangle;
 class Renderer
 {
 private:

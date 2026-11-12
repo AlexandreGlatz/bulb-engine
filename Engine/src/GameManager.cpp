@@ -1,10 +1,13 @@
 #include "GameManager.h"
 #include "Window.h"
 #include "Renderer.h"
+#include "Scene.h"
 #include "Log.h"
 
 GameManager::GameManager()
-: m_isRunning(true)
+: m_isRunning(true),
+m_currentScene(0),
+m_pRenderer(nullptr)
 {
 }
 
@@ -12,7 +15,7 @@ GameManager::~GameManager()
 {
 }
 
-bool GameManager::Init(uint16 windowWidth, uint16 windowHeight, std::string name)
+bool GameManager::Init()
 {
        
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -24,25 +27,32 @@ bool GameManager::Init(uint16 windowWidth, uint16 windowHeight, std::string name
         Log::Info("SDL initialization succeeded!");
     }
 
-    m_pWindow = std::make_unique<Window>();
-    m_pWindow->Init(windowWidth, windowHeight, name);
     if(m_pWindow->Open() == true)
-    {
+    { 
         m_pRenderer = std::make_unique<Renderer>();
         m_pRenderer->Initialize(*m_pWindow);
 
+        for(sptr<Scene> pScene : m_scenes)
+        {
+            pScene->SetRenderer(m_pRenderer);
+        }
         Loop();
     }
 
     return true;
 }
 
+bool GameManager::CreateWindow(uint16 windowWidth, uint16 windowHeight, std::string name)
+{
+    m_pWindow = std::make_unique<Window>();
+    return m_pWindow->Init(windowWidth, windowHeight, name);
+}
 
 void GameManager::Loop()
 {
     while(m_isRunning)
     {
-        m_pWindow->Update();
+        Update();
         Render();
         CheckInputs();
     }
@@ -50,6 +60,11 @@ void GameManager::Loop()
     Close();
 }
 
+void GameManager::Update()
+{
+    m_pWindow->Update();
+    m_scenes[m_currentScene]->Update();
+}
 void GameManager::CheckInputs()
 {
    if (m_isRunning)
@@ -64,6 +79,7 @@ void GameManager::CheckInputs()
                    break;
                default:
                    //Send input to scene
+                   m_scenes[m_currentScene]->OnInput(event);
                    break;
            }
        }
@@ -73,6 +89,7 @@ void GameManager::CheckInputs()
 void GameManager::Render()
 {
     m_pRenderer->BeginDraw();
+    m_scenes[m_currentScene]->Render();
     m_pRenderer->EndDraw();
 }
 
@@ -80,5 +97,10 @@ void GameManager::Close()
 {
     m_pRenderer->Close();
     m_pWindow->Close();
+
+    for(sptr<Scene> pScene : m_scenes)
+    {
+        pScene->Close();
+    }
 }
 

@@ -1,4 +1,6 @@
 #include "Renderer.h"
+#include "Rectangle.h"
+#include "Log.h"
 
 Renderer::Renderer():mSdlRenderer(nullptr)
 {

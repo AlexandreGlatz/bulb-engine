@@ -1,4 +1,4 @@
-#ifndef RECTANGLE__H_
+#ifndef RECTANGLE__H_ 
 #define RECTANGLE__H_
 
 #include <SDL2/SDL_rect.h>
@@ -7,16 +7,16 @@
 
 struct Rectangle
 {
-   Vector2<uint16> position;
-   Vector2<uint16> dimensions;
+   Vector2<float> position;
+   Vector2<float> dimensions;
 
    SDL_Rect ToSdlRect() const
    {
        return SDL_Rect{
-           static_cast<int>(position.x),
-           static_cast<int>(position.y),
-           static_cast<int>(dimensions.width),
-           static_cast<int>(dimensions.height)};
+           static_cast<int16>(position.x),
+           static_cast<int16>(position.y),
+           static_cast<int16>(dimensions.width),
+           static_cast<int16>(dimensions.height)};
    }
 };
 

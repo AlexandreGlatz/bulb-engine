@@ -1,7 +1,6 @@
 #ifndef VECTOR_2__
 #define VECTOR_2__
 
-#include "Log.h"
 #include <string>
 
 template <typename T>

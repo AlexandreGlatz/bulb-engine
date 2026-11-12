@@ -4,7 +4,9 @@
 #include "Define.h"
 
 #include <string>
+#include <vector>
 
+class Scene;
 class Window;
 class Renderer;
 class GameManager 
@@ -13,16 +15,27 @@ public:
     GameManager();
     ~GameManager();
     
-    bool Init(uint16 windowWidth, uint16 windowHeight, std::string name);
+    bool Init();
+    bool CreateWindow(uint16 windowWidth, uint16 windowHeight, std::string name);
+
+    template<typename T>
+    void CreateScene();
+
     void Loop();
+    void Update();
     void Close();
     void CheckInputs();
     void Render();
 
 private:
     uptr<Window> m_pWindow;
-    uptr<Renderer> m_pRenderer;
+    sptr<Renderer> m_pRenderer;
+    std::vector<sptr<Scene>> m_scenes;
+
     bool m_isRunning;
+    uint16 m_currentScene;
 };
+
+#include "GameManager.inl"
 
 #endif
