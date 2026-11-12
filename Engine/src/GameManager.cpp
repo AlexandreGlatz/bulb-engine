@@ -4,6 +4,9 @@
 #include "Scene.h"
 #include "Log.h"
 
+namespace bulb
+{
+
 GameManager::GameManager()
 : m_isRunning(true),
 m_currentScene(0),
@@ -104,3 +107,4 @@ void GameManager::Close()
     }
 }
 
+}

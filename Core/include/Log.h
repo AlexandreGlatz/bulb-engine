@@ -4,6 +4,8 @@
 #include <SDL2/SDL_log.h>
 #include <string>
 
+namespace bulb 
+{
 enum class LOG_TYPE
 {
    APPLICATION = SDL_LOG_CATEGORY_APPLICATION,
@@ -27,5 +29,5 @@ public:
    static void Info(const std::string& message);
    static void Error(LOG_TYPE category, const std::string& message);
 };
-
+}
 #endif

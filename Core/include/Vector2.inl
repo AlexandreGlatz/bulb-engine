@@ -1,6 +1,9 @@
 #include <cmath>
 #include <string>
 
+namespace bulb
+{
+
 template <typename T>
 Vector2<T>::Vector2(T _x, T _y)
 {
@@ -134,4 +137,6 @@ template <typename T>
 T Vector2<T>::Dot(Vector2<T> const& other)
 {
     return x * other.x + y * other.y;
+}
+
 }

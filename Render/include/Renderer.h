@@ -3,6 +3,9 @@
 
 #include "Window.h"
 
+namespace bulb
+{
+
 class Rectangle;
 class Renderer
 {
@@ -21,4 +24,5 @@ public:
    void DrawRect(Rectangle& rRect);
 };
 
+}
 #endif

@@ -1,6 +1,9 @@
 #include "Scene.h"
 #include "Renderer.h"
 
+namespace bulb 
+{
+
 Scene::Scene()
 {
 }
@@ -33,4 +36,6 @@ void Scene::Render()
 
 void Scene::Close()
 {
+}
+
 }

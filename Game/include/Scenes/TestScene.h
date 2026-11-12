@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "Vector2.h"
 
-class TestScene : public Scene
+class TestScene : public bulb::Scene
 {
 public:
     TestScene();
@@ -17,7 +17,7 @@ public:
     virtual void Close();
 
 protected:
-    Vector2f m_position;
+    bulb::Vector2f m_position;
 };
 
 #endif

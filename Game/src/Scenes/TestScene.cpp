@@ -34,7 +34,7 @@ void TestScene::OnInput(SDL_Event event)
 
 void TestScene::Render()
 {
-    Rectangle rect {m_position, {100, 100}};
+    bulb::Rectangle rect {m_position, {100, 100}};
     m_pRenderer->DrawRect(rect);
 }
 

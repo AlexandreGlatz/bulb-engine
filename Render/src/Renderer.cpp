@@ -2,6 +2,8 @@
 #include "Rectangle.h"
 #include "Log.h"
 
+namespace bulb
+{
 Renderer::Renderer():mSdlRenderer(nullptr)
 {
 }
@@ -40,5 +42,4 @@ void Renderer::DrawRect(Rectangle& rRect)
    SDL_RenderFillRect(mSdlRenderer, &sdlRect);
 }
 
-
-
+}

@@ -4,6 +4,8 @@
 #include "Define.h"
 #include <SDL2/SDL.h>
 
+namespace bulb
+{
 class Renderer;
 class Scene
 {
@@ -21,5 +23,5 @@ public:
 protected:
     sptr<Renderer> m_pRenderer;
 };
-
+}
 #endif

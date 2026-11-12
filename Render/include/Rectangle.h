@@ -5,6 +5,8 @@
 #include "Define.h"
 #include "Vector2.h"
 
+namespace bulb
+{
 struct Rectangle
 {
    Vector2<float> position;
@@ -20,4 +22,5 @@ struct Rectangle
    }
 };
 
+}
 #endif

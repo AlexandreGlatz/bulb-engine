@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+namespace bulb
+{
 class Scene;
 class Window;
 class Renderer;
@@ -36,6 +38,7 @@ private:
     uint16 m_currentScene;
 };
 
+}
 #include "GameManager.inl"
 
 #endif

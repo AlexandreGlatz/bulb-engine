@@ -7,6 +7,9 @@
 #include <string>
 #include <SDL2/SDL.h>
 
+namespace bulb
+{
+
 class Window
 {
 public:
@@ -29,4 +32,5 @@ private:
     SDL_Window* m_pSDLWindow;
 };
 
+}
 #endif

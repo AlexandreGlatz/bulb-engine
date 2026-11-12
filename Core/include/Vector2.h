@@ -3,6 +3,9 @@
 
 #include <string>
 
+namespace bulb
+{
+
 template <typename T>
 struct Vector2
 {
@@ -40,9 +43,10 @@ struct Vector2
     };
 };
 
-#include "Vector2.inl"
-
 typedef Vector2<float> Vector2f;
 typedef Vector2<int> Vector2i;
+}
+
+#include "Vector2.inl"
 
 #endif

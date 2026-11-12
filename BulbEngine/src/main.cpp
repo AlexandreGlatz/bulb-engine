@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-    GameManager gm;
+    bulb::GameManager gm;
 
     gm.CreateWindow(800, 800, "LE JEU VIDEO GAMING");
     gm.CreateScene<TestScene>();

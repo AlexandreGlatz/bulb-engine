@@ -1,6 +1,9 @@
 #include "Window.h"
 #include "Log.h"
 
+namespace bulb
+{
+
 Window::Window()
 : m_name("Base Window"),
 m_dimensions({0, 0}),
@@ -57,3 +60,4 @@ bool Window::Close()
     return true;
 }
 
+}
