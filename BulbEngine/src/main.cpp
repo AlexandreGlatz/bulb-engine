@@ -7,8 +7,10 @@
 #include <Engine/GameManager.h>
 #include <Engine/Actor.h>
 #include <Engine/Components/Transform2D.h>
+#include <Engine/Components/AABBBoxCollider.h>
 
 #include "Scenes/TestScene.h"
+#include "Scripts/Controller.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,8 +19,13 @@ int main(int argc, char *argv[])
     gm.CreateWindow(800, 800, "LE JEU VIDEO GAMING");
     TestScene* pScene = gm.CreateScene<TestScene>();
 
-    bulb::Transform transform {{0.0f, 0.0f}, {100.0f, 100.0f}, 0.0f};
-    bulb::Actor* pActor1 = pScene->SpawnActor(transform);
+    bulb::Transform playerTransform {{0.0f, 0.0f}, {100.0f, 100.0f}, 0.0f};
+    bulb::Actor* pPlayer = pScene->SpawnActor(playerTransform);
+    pPlayer->AddComponent<Controller>();
+
+    bulb::Transform obstacleTransform {{50.0f, 50.0f}, {30.0f, 30.0f}, 0.0f};
+    bulb::Actor* pObstacle = pScene->SpawnActor(obstacleTransform);
+    pObstacle->AddComponent<bulb::AABBBoxCollider>(obstacleTransform);
 
     gm.Init(); 
 }

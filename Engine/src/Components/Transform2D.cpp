@@ -73,4 +73,8 @@ void Transform2D::AddRotation(float rotation)
     SetRotation(m_rotation + rotation);
 }
 
+void Transform2D::OnInput(SDL_Event event)
+{
+}
+
 }

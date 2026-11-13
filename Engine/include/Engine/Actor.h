@@ -1,6 +1,7 @@
 #ifndef ACTOR__H_
 #define ACTOR__H_
 
+#include <SDL2/SDL_events.h>
 #include <vector>
 #include <Core/Define.h>
 #include <Core/Vector2.h>
@@ -19,6 +20,7 @@ struct Transform;
 class Component;
 class Transform2D;
 class Scene;
+class Collider;
 class Actor
 {
 public:
@@ -27,6 +29,7 @@ public:
 
     void Start();
     void Update();
+    void OnInput(SDL_Event event);
     void Destroy();
     void AttachScene(Scene* pScene);
 
@@ -38,6 +41,11 @@ public:
 
     void SetActive(bool isActive);
     void SetTransform(Vector2f position, Vector2f size, float rotation);
+    void AddTransform(Vector2f position = {0.0f, 0.0f}, Vector2f size = {0.0f, 0.0f}, float rotation = 0.0f);
+
+    void OnCollisionEnter(Collider const* pCollider, Collider const* pOther);
+    void OnCollision(Collider const* pCollider, Collider const* pOther);
+    void OnCollisionExit(Collider const* pCollider, Collider const* pOther);
 
     int16 GetId() const;
     Transform2D const* GetTransform() const;

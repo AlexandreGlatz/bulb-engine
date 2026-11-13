@@ -50,6 +50,14 @@ void Actor::Update()
     }
 }
 
+void Actor::OnInput(SDL_Event event)
+{
+    for(uptr<Component>& pComponent : m_components)
+    {
+        pComponent->OnInput(event);
+    }
+}
+
 void Actor::SetActive(bool isActive)
 {
     if(isActive == true)
@@ -68,6 +76,12 @@ void Actor::SetTransform(Vector2f position, Vector2f size, float rotation)
     m_pTransformComponent->SetRotation(rotation);
 }
 
+void Actor::AddTransform(Vector2f position, Vector2f size, float rotation)
+{
+    m_pTransformComponent->AddPosition(position);
+    m_pTransformComponent->AddSize(size);
+    m_pTransformComponent->AddRotation(rotation);
+}
 
 void Actor::Destroy()
 {
@@ -80,5 +94,28 @@ void Actor::Destroy()
     m_pScene->DestroyActor(this);
 }
 
+void Actor::OnCollisionEnter(const Collider *pCollider, const Collider *pOther)
+{
+    for(uptr<Component>& pComponent : m_components)
+    {
+        pComponent->OnCollisionEnter(pCollider, pOther);
+    }
+}
+
+void Actor::OnCollision(const Collider *pCollider, const Collider *pOther)
+{
+    for(uptr<Component>& pComponent : m_components)
+    {
+        pComponent->OnCollision(pCollider, pOther);
+    }
+}
+
+void Actor::OnCollisionExit(const Collider *pCollider, const Collider *pOther)
+{
+    for(uptr<Component>& pComponent : m_components)
+    {
+        pComponent->OnCollisionExit(pCollider, pOther);
+    }
+}
 
 }

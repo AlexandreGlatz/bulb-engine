@@ -17,6 +17,7 @@ public:
     void OnStart() override;
     void Update() override;
     void OnEnd() override;
+    void OnInput(SDL_Event event) override;
 
     void SetPosition(Vector2f position);
     void SetSize(Vector2f size);

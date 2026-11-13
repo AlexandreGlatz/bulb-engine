@@ -1,6 +1,8 @@
 #ifndef VECTOR_2__
 #define VECTOR_2__
 
+#include "Define.h"
+
 #include <string>
 
 namespace bulb
@@ -10,8 +12,6 @@ template <typename T>
 struct Vector2
 {
     Vector2(T _x,T _y);
-    static Vector2<T> Zero;
-    static Vector2<T> One;
 
     void operator+=(Vector2<T> const& rhs);
     void operator-=(Vector2<T> const& rhs);
@@ -44,7 +44,7 @@ struct Vector2
 };
 
 typedef Vector2<float> Vector2f;
-typedef Vector2<int> Vector2i;
+typedef Vector2<int16> Vector2i;
 }
 
 #include "Vector2.inl"

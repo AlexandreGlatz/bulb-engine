@@ -49,6 +49,10 @@ void Scene::CreateActors()
     }
 }
 
+void Scene::PhysicStep()
+{
+}
+
 void Scene::Update()
 {
     CreateActors();
@@ -85,6 +89,10 @@ void Scene::DestroyActors()
 
 void Scene::OnInput(SDL_Event event)
 {
+    for(uptr<Actor>& pActor : m_actors)
+    {
+        pActor->OnInput(event);
+    }
 }
 
 void Scene::Render()

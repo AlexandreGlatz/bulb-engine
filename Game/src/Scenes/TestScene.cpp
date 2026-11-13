@@ -21,18 +21,7 @@ void TestScene::Start()
 
 void TestScene::OnInput(SDL_Event event)
 {
-    if(event.type == SDL_KEYDOWN)
-    {
-        if(event.key.keysym.sym == SDL_KeyCode::SDLK_q)
-        {
-            m_position.x+=10;
-        }
-
-        if(event.key.keysym.sym == SDL_KeyCode::SDLK_d)
-        {
-            m_position.x-=10;
-        }
-    }
+    Scene::OnInput(event);
 }
 
 void TestScene::Render()
