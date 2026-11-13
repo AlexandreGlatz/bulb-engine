@@ -12,8 +12,9 @@ public:
     PhysicsManager();
     ~PhysicsManager();
 
-    void AddCollider(Collider const* pCollider);
+    void AddCollider(Collider* pCollider);
     void ManageCollisions();
+    void RemoveCollider(Collider* pCollider);
 
 private:
     std::vector<Collider*> m_colliders;
