@@ -1,6 +1,7 @@
 #include "Scripts/Controller.h"
 #include <Engine/Components/Component.h>
 #include <Engine/Actor.h>
+#include <iostream>
 
 Controller::Controller(bulb::Actor* pOwner)
 : bulb::Component(pOwner),
@@ -25,9 +26,10 @@ void Controller::OnEnd()
 {
 }
 
-void Controller::OnCollisionEnter(bulb::Collider const* pCollider, bulb::Collider const* pOther)
+void Controller::OnCollision(bulb::Collider const* pCollider, bulb::Collider const* pOther)
 {
-    m_direction = {0.0f, 0.0f};
+    m_direction = m_direction * -1.0f;
+    std::cout<<"AAAAAAAAAAAAAAAA"<<std::endl;
 }
 
 void Controller::OnInput(SDL_Event event)
@@ -37,28 +39,49 @@ void Controller::OnInput(SDL_Event event)
         if(event.key.keysym.sym == SDL_KeyCode::SDLK_q)
         {
             m_direction = {-1.0f, 0.0f};
+            m_inputAmount++;
         }
 
         else if(event.key.keysym.sym == SDL_KeyCode::SDLK_d)
         {
             m_direction = {1.0f, 0.0f};
+            m_inputAmount++;
         }
 
         else if(event.key.keysym.sym == SDL_KeyCode::SDLK_z)
         {
             m_direction = {0.0f, -1.0f};
+            m_inputAmount++;
         }
 
         else if(event.key.keysym.sym == SDL_KeyCode::SDLK_s)
         {
             m_direction = {0.0f, 1.0f};
+            m_inputAmount++;
         }
-        m_inputAmount++;
     }   
 
     else if(event.type == SDL_KEYUP)
     {
-        m_inputAmount--;
+       if(event.key.keysym.sym == SDL_KeyCode::SDLK_q)
+        {
+            m_inputAmount--;
+        }
+
+        else if(event.key.keysym.sym == SDL_KeyCode::SDLK_d)
+        {
+            m_inputAmount--;
+        }
+
+        else if(event.key.keysym.sym == SDL_KeyCode::SDLK_z)
+        {
+            m_inputAmount--;
+        }
+
+        else if(event.key.keysym.sym == SDL_KeyCode::SDLK_s)
+        {
+            m_inputAmount--;
+        }
         if(m_inputAmount == 0)
             m_direction = {0.0f, 0.0f};
     }

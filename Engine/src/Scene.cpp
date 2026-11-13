@@ -11,6 +11,7 @@ namespace bulb
 
 Scene::Scene()
 {
+    m_pPhysicsManager = std::make_unique<PhysicsManager>();
 }
 
 Scene::~Scene()
@@ -24,10 +25,6 @@ void Scene::SetRenderer(sptr<Renderer> pRenderer)
 
 void Scene::Start()
 {
-    for(uptr<Actor>& pActor : m_actors)
-    {
-        pActor->Start();
-    }
 }
 
 Actor* Scene::SpawnActor(Transform const& transform)
@@ -35,8 +32,10 @@ Actor* Scene::SpawnActor(Transform const& transform)
     m_toCreate.push(std::make_unique<Actor>(m_actorId, transform));
     m_actorId++;
 
-    m_toCreate.front()->AttachScene(this);
-    return m_toCreate.front().get();
+    m_toCreate.back()->AttachScene(this);
+    m_toCreate.back()->AttachPhysicsManager(m_pPhysicsManager.get());
+    m_toCreate.back()->Start();
+    return m_toCreate.back().get();
 }
 
 void Scene::CreateActors()
@@ -49,8 +48,9 @@ void Scene::CreateActors()
     }
 }
 
-void Scene::PhysicStep()
+void Scene::PhysicsStep()
 {
+    m_pPhysicsManager->ManageCollisions();
 }
 
 void Scene::Update()

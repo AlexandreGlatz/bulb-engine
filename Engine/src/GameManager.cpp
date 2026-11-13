@@ -41,6 +41,7 @@ bool GameManager::Init()
         {
             pScene->SetRenderer(m_pRenderer);
         }
+        m_scenes[m_currentScene]->Start(); 
         Loop();
     }
 
@@ -58,6 +59,7 @@ void GameManager::Loop()
     while(m_isRunning)
     {
         Time::ComputeDeltaTime();
+        PhysicsStep();
         Update();
         Render();
         CheckInputs();
@@ -65,6 +67,11 @@ void GameManager::Loop()
     }
 
     Close();
+}
+
+void GameManager::PhysicsStep()
+{
+    m_scenes[m_currentScene]->PhysicsStep();
 }
 
 void GameManager::Update()

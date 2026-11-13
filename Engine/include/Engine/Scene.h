@@ -10,6 +10,7 @@ namespace bulb
 {
 
 struct Transform;
+class PhysicsManager;
 class Actor;
 class Renderer;
 class Collider;
@@ -24,12 +25,9 @@ public:
     Actor* SpawnActor(Transform const& transform);
     void DestroyActor(Actor* pActor);
 
-    void AddCollider(Collider* pCollider);
-    void CheckCollisions();
-
     virtual void Start();
     virtual void Update();
-    virtual void PhysicStep();
+    virtual void PhysicsStep();
     virtual void Render();
     virtual void OnInput(SDL_Event event);
     virtual void Close();
@@ -41,6 +39,7 @@ protected:
 protected:
     int m_actorId;
     sptr<Renderer> m_pRenderer;
+    uptr<PhysicsManager> m_pPhysicsManager;
 
     std::vector<uptr<Actor>> m_actors;
 

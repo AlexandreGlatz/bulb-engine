@@ -1,6 +1,7 @@
 #ifndef ACTOR__H_
 #define ACTOR__H_
 
+#include "PhysicsManager.h"
 #include <SDL2/SDL_events.h>
 #include <vector>
 #include <Core/Define.h>
@@ -21,6 +22,7 @@ class Component;
 class Transform2D;
 class Scene;
 class Collider;
+class PhysicsManager;
 class Actor
 {
 public:
@@ -32,6 +34,7 @@ public:
     void OnInput(SDL_Event event);
     void Destroy();
     void AttachScene(Scene* pScene);
+    void AttachPhysicsManager(PhysicsManager* m_pPhysicsManager);
 
     template <typename T, typename ... Args>
     void AddComponent(Args... args);
@@ -55,6 +58,7 @@ private:
     ACTOR_STATE m_state;
 
     Scene* m_pScene;
+    PhysicsManager* m_pPhysicsManager;
     uptr<Transform2D> m_pTransformComponent;
     std::vector<uptr<Component>> m_components;
 };

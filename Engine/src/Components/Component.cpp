@@ -26,4 +26,8 @@ void Component::OnCollisionExit(const Collider *pCollider, const Collider *pOthe
 {
 }
 
+void Component::AddToPhysicsManager(PhysicsManager* pPhysicsManager)
+{
+}
+
 }

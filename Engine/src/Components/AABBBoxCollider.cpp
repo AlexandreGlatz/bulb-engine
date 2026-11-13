@@ -45,10 +45,10 @@ bool AABBBoxCollider::IsColliding(Collider const& other) const
 
 bool AABBBoxCollider::IsColliding(const AABBBoxCollider &other) const
 {
-    return m_transform.position.x + m_transform.scale.width > other.m_transform.position.x &&
-        m_transform.position.x < other.m_transform.position.x + other.m_transform.scale.width &&
-        m_transform.position.y + m_transform.scale.height < other.m_transform.position.y &&
-        m_transform.position.y > other.m_transform.position.y + other.m_transform.scale.height;
+    return !(m_transform.position.x > other.m_transform.position.x + other.m_transform.scale.width ||
+        m_transform.position.x + m_transform.scale.width < other.m_transform.position.x ||
+        m_transform.position.y + m_transform.scale.height < other.m_transform.position.y ||
+        m_transform.position.y > other.m_transform.position.y + other.m_transform.scale.height);
 }
 
 void AABBBoxCollider::OnCollisionEnter(Collider const* pCollider, Collider const* pOther) 

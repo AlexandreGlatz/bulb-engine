@@ -24,6 +24,7 @@ public:
     T* CreateScene();
 
     void Loop();
+    void PhysicsStep();
     void Update();
     void Close();
     void CheckInputs();

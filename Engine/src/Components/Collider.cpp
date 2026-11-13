@@ -1,5 +1,6 @@
 #include "Components/Collider.h"
 #include "Actor.h"
+#include "PhysicsManager.h"
 
 namespace bulb
 {
@@ -13,6 +14,12 @@ m_entered(false)
 
 Collider::~Collider()
 {
+}
+
+void Collider::AddToPhysicsManager(PhysicsManager* pPhysicsManager)
+{
+    pPhysicsManager->AddCollider(this);
+    m_pPhysicsManager = pPhysicsManager;
 }
 
 COLLIDER_TYPE Collider::GetType() const
@@ -41,6 +48,11 @@ void Collider::CollisionExit(Collider const& other)
 
     m_entered = false;
     m_pOwner->OnCollisionExit(this, &other);
+}
+
+void Collider::OnEnd()
+{
+    m_pPhysicsManager->RemoveCollider(this);
 }
 
 }

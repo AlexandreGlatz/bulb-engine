@@ -28,15 +28,14 @@ void PhysicsManager::RemoveCollider(Collider* pCollider)
 
 void PhysicsManager::ManageCollisions()
 {
-    int16 size;
     for(uint16 i = 0; i < m_colliders.size(); ++i)
     {
         if(i + 1 >= m_colliders.size())
             return;
 
-        for(uint16 j = i + 1; j < size; ++j)
+        for(uint16 j = i + 1; j < m_colliders.size(); ++j)
         {
-            Collider const* pCurrent = m_colliders[j];
+            Collider* pCurrent = m_colliders[j];
             if(m_colliders[i]->IsColliding(*pCurrent))
             {
                 m_colliders[i]->CollisionEnter(*pCurrent);
@@ -46,7 +45,6 @@ void PhysicsManager::ManageCollisions()
             m_colliders[i]->CollisionExit(*pCurrent);
 
         }
-        size--;
     }
 }
 }

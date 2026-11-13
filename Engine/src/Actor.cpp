@@ -34,6 +34,11 @@ void Actor::AttachScene(Scene* pScene)
     m_pScene = pScene;
 }
 
+void Actor::AttachPhysicsManager(PhysicsManager* pPhysicsManager)
+{
+    m_pPhysicsManager = pPhysicsManager;
+}
+
 void Actor::Start()
 {
     for(uptr<Component>& pComponent : m_components)

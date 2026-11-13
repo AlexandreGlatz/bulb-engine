@@ -22,8 +22,9 @@ int main(int argc, char *argv[])
     bulb::Transform playerTransform {{0.0f, 0.0f}, {100.0f, 100.0f}, 0.0f};
     bulb::Actor* pPlayer = pScene->SpawnActor(playerTransform);
     pPlayer->AddComponent<Controller>();
+    pPlayer->AddComponent<bulb::AABBBoxCollider>(playerTransform);
 
-    bulb::Transform obstacleTransform {{50.0f, 50.0f}, {30.0f, 30.0f}, 0.0f};
+    bulb::Transform obstacleTransform {{300.0f, 300.0f}, {30.0f, 30.0f}, 0.0f};
     bulb::Actor* pObstacle = pScene->SpawnActor(obstacleTransform);
     pObstacle->AddComponent<bulb::AABBBoxCollider>(obstacleTransform);
 

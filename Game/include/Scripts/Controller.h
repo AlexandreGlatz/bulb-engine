@@ -15,7 +15,7 @@ public:
     void OnEnd() override;
     void OnInput(SDL_Event event) override;
 
-    void OnCollisionEnter(bulb::Collider const* pCollider, bulb::Collider const* pOther) override;
+    void OnCollision(bulb::Collider const* pCollider, bulb::Collider const* pOther) override;
 
 private:
     bulb::Vector2f m_direction;

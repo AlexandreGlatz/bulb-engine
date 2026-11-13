@@ -14,6 +14,7 @@ enum class COLLIDER_TYPE
     CIRCLE
 };
 
+class PhysicsManager;
 class Actor;
 class Collider : public Component
 {
@@ -21,9 +22,10 @@ public:
     Collider(Actor* pOwner, COLLIDER_TYPE type);
     virtual ~Collider() override;
 
+    virtual void AddToPhysicsManager(PhysicsManager* pPhysicsManager) override;
     virtual void OnStart() override = 0;
     virtual void Update() override = 0;
-    virtual void OnEnd() override = 0;
+    virtual void OnEnd() override;
     virtual void OnInput(SDL_Event event) override = 0;
     
     virtual void CollisionEnter(Collider const& other);
@@ -36,6 +38,7 @@ public:
 protected:
     COLLIDER_TYPE m_type;
     bool m_entered;
+    PhysicsManager* m_pPhysicsManager;
 };
 
 }
