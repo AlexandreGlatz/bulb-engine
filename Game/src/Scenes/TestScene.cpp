@@ -1,5 +1,7 @@
 #include "Scenes/TestScene.h"
+#include "Engine/Actor.h"
 
+#include <Engine/Components/Transform2D.h>
 #include <Render/Rectangle.h>
 #include <Render/Renderer.h>
 
@@ -35,13 +37,12 @@ void TestScene::OnInput(SDL_Event event)
 
 void TestScene::Render()
 {
-    bulb::Rectangle rect {m_position, {100, 100}};
-    m_pRenderer->DrawRect(rect);
-}
-
-void TestScene::Update()
-{
-
+    for(uptr<bulb::Actor>& pActor : m_actors)
+    {
+        bulb::Transform2D const* pTransform = pActor->GetTransform();
+        bulb::Rectangle rect {pTransform->GetPosition(), pTransform->GetSize()};
+        m_pRenderer->DrawRect(rect);
+    }
 }
 
 void TestScene::Close()

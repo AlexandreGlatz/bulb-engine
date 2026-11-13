@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 4.0)
 project(Engine)
 
-file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
+file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp" "${PROJECT_SOURCE_DIR}/src/*/*.cpp")
 
 add_library(${PROJECT_NAME} SHARED
     ${SOURCES}

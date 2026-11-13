@@ -2,9 +2,12 @@
 
 namespace bulb
 {
+
 template <typename T>
-void GameManager::CreateScene()
+T* GameManager::CreateScene()
 {
-    m_scenes.push_back(std::make_shared<T>());
+    m_scenes.push_back(std::make_unique<T>());
+    return static_cast<T*>(m_scenes[m_scenes.size() - 1].get());
 }
+
 }

@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "Scene.h"
+#include "Time.h"
 
 #include <Core/Log.h>
 #include <Render/Window.h>
@@ -36,7 +37,7 @@ bool GameManager::Init()
         m_pRenderer = std::make_unique<Renderer>();
         m_pRenderer->Initialize(*m_pWindow);
 
-        for(sptr<Scene> pScene : m_scenes)
+        for(uptr<Scene>& pScene : m_scenes)
         {
             pScene->SetRenderer(m_pRenderer);
         }
@@ -56,9 +57,11 @@ void GameManager::Loop()
 {
     while(m_isRunning)
     {
+        Time::ComputeDeltaTime();
         Update();
         Render();
         CheckInputs();
+        Time::DelayTime();
     }
 
     Close();
@@ -102,7 +105,7 @@ void GameManager::Close()
     m_pRenderer->Close();
     m_pWindow->Close();
 
-    for(sptr<Scene> pScene : m_scenes)
+    for(uptr<Scene>& pScene : m_scenes)
     {
         pScene->Close();
     }

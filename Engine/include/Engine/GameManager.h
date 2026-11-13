@@ -21,7 +21,7 @@ public:
     bool CreateWindow(uint16 windowWidth, uint16 windowHeight, std::string name);
 
     template<typename T>
-    void CreateScene();
+    T* CreateScene();
 
     void Loop();
     void Update();
@@ -32,7 +32,7 @@ public:
 private:
     uptr<Window> m_pWindow;
     sptr<Renderer> m_pRenderer;
-    std::vector<sptr<Scene>> m_scenes;
+    std::vector<uptr<Scene>> m_scenes;
 
     bool m_isRunning;
     uint16 m_currentScene;

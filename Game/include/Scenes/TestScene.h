@@ -10,11 +10,10 @@ public:
     TestScene();
     ~TestScene();
 
-    virtual void Start();
-    virtual void Update();
-    virtual void Render();
-    virtual void OnInput(SDL_Event event);
-    virtual void Close();
+    virtual void Start() override;
+    virtual void Render() override;
+    virtual void OnInput(SDL_Event event) override;
+    virtual void Close() override;
 
 protected:
     bulb::Vector2f m_position;
